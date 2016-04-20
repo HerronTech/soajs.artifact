@@ -1,1 +1,1 @@
-# soajs.-artifact
+# soajs.artifact
