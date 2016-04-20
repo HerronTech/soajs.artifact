@@ -12,5 +12,20 @@ module.exports = {
         memory: ''
     },
     "errors": {},
-    "schema": {}
+    "schema": {
+        "/:id": {
+            "_apiInfo": {
+                "l": "Get contact by ID",
+                "group": "Basic",
+                "groupMain": true
+            },
+            "id": {
+                "source": ['params.id'],
+                "required": true,
+                "validation": {
+                    "type": "string"
+                }
+            }
+        }
+    }
 };
