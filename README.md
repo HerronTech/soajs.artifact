@@ -1,10 +1,13 @@
 # soajs.artifact
 
 
-modify contact
+modify contact - PUT
 
-delete contact 
+delete contact - DELETE
 
-get contact(s)
+get contact(s) - GET
+* one contact by ID
+* bunch of them matching a query
+* All of them
 
-add contact(s)
+add contact(s) - POST
