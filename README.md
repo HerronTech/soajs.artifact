@@ -1,13 +1,19 @@
 # soajs.artifact
 
+This is an artifact to be used as a starting template to build SOAJS service. This is an address book service to be used as learn by example
 
-modify contact - PUT
+## Get contact(s) - GET
+* API /contact/:id - Get contact by ID
+* API /contact/match/:q - Get contacts based on matching query
+* API /contact - Get all contacts
 
-delete contact - DELETE
+## Modify contact - PUT
+* API 
 
-get contact(s) - GET
-* one contact by ID
-* bunch of them matching a query
-* All of them
+## Delete contact - DELETE
+* API 
 
-add contact(s) - POST
+## Add contact(s) - POST
+* API 
+* API 
+
