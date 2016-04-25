@@ -18,5 +18,10 @@ service.init(function () {
         return res.json(req.soajs.buildResponse(null, "ALL"));
     });
 
+    service.put("/contact/id/:id", function (req, res) {
+        var txt = req.soajs.inputmaskData.id;
+        return res.json(req.soajs.buildResponse(null, txt));
+    });
+
     service.start();
 });
