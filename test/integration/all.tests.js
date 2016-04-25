@@ -41,14 +41,16 @@ describe('Starting Integration tests', function () {
                     });
                 }
                 else {
-                    helper.requester(scenario.method, {
-                        uri: 'http://localhost:' + servicePort + '/' + test.url,
-                        body: test.body,
-                        form: test.bodyForm
-                    }, function (err, body) {
-                        assert.ifError(err);
-                        assert.deepEqual(body, test.result);
-                        done();
+                    it(testDescription, function(done) {
+                        helper.requester(scenario.method, {
+                            uri: 'http://localhost:' + servicePort + '/' + test.url,
+                            body: test.body,
+                            form: test.bodyForm
+                        }, function (err, body) {
+                            assert.ifError(err);
+                            assert.deepEqual(body, test.result);
+                            done();
+                        });
                     });
                 }
             });
