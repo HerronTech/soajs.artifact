@@ -1,6 +1,6 @@
 "use strict";
 var helper = require("../helper.js");
-var service, controller;
+var service;
 
 describe("Initialize & start controller and service", function () {
 
@@ -10,13 +10,10 @@ describe("Initialize & start controller and service", function () {
     });
 
     after(function (done) {
-        controller = require("soajs.controller");
+        service = helper.requireModule('./index.js');
         setTimeout(function () {
-            service = helper.requireModule('./index.js');
-            setTimeout(function () {
-                require("./all.tests.js");
-                done();
-            }, 1000);
+            require("./all.tests.js");
+            done();
         }, 1000);
     });
 });
