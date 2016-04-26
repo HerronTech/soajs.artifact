@@ -4,8 +4,8 @@ var data = require(__dirname + "/../data/index.json");
 
 module.exports = {
 
-	"getEntry": function(config, req, cb){
-		var id = req.soajs.inputmaskData.id;
+	"getEntry": function(config, soajs, cb){
+		var id = soajs.inputmaskData.id;
 		if(!data){
 			return cb(new Error("data object doesn't exist!"));
 		}
@@ -17,14 +17,14 @@ module.exports = {
 		return cb(null, data[id]);
 	},
 
-	"getEntries": function(config, req, cb){
+	"getEntries": function(config, soajs, cb){
 		if(!data){
 			return cb(new Error("data object doesn't exist!"));
 		}
 
-		if(req.soajs.inputmaskData.from && req.soajs.inputmaskData.to){
-			var from = req.soajs.inputmaskData.from;
-			var to = req.soajs.inputmaskData.to;
+		if(soajs.inputmaskData.from && soajs.inputmaskData.to){
+			var from = soajs.inputmaskData.from;
+			var to = soajs.inputmaskData.to;
 			var keys = Object.keys(data);
 
 			if(to > keys.length -1){
@@ -42,12 +42,12 @@ module.exports = {
 		return cb(null, data);
 	},
 
-	"deleteEntry": function(config, req, cb){
+	"deleteEntry": function(config, soajs, cb){
 		if(!data){
 			return cb(new Error("data object doesn't exist!"));
 		}
 
-		var id = req.soajs.inputmaskData.id;
+		var id = soajs.inputmaskData.id;
 		if(!data[id]){
 			return cb(new Error("no entry found in data object for id ", id));
 		}
@@ -56,18 +56,18 @@ module.exports = {
 		return cb(null, true);
 	},
 
-	"addEntry": function(config, req, cb){
+	"addEntry": function(config, soajs, cb){
 		if(!data){
 			data = {};
 		}
 
-		if(Array.isArray(req.soajs.inputmaskData.data)){
-			req.soajs.inputmaskData.data.forEach(function(oneContact){
+		if(Array.isArray(soajs.inputmaskData.data)){
+			soajs.inputmaskData.data.forEach(function(oneContact){
 				pushRecord(oneContact);
 			});
 		}
 		else{
-			pushRecord(req.soajs.inputmaskData.data);
+			pushRecord(soajs.inputmaskData.data);
 		}
 
 		return cb(null, true);
@@ -78,21 +78,21 @@ module.exports = {
 		}
 	},
 
-	"updateEntry": function(config, req, cb){
+	"updateEntry": function(config, soajs, cb){
 		if(!data){
 			return cb(new Error("data object doesn't exist!"));
 		}
 
-		var id = req.soajs.inputmaskData.id;
+		var id = soajs.inputmaskData.id;
 		if(!data[id]){
 			return cb(new Error("no entry found in data object for id ", id));
 		}
 		
-		data[id] = req.soajs.inputmaskData.data;
+		data[id] = soajs.inputmaskData.data;
 		return cb(null, true);
 	},
 
-	"matchEntry": function(config, req, cb){
+	"matchEntry": function(config, soajs, cb){
 		if(!data){
 			return cb(new Error("data object doesn't exist!"));
 		}
@@ -101,16 +101,16 @@ module.exports = {
 
 		for(var entryId in data){
 			if(Object.hasOwnProperty.call(data, entryId)){
-				if(req.soajs.inputmaskData.q.indexOf(data[entryId].firstName) !== -1){
+				if(soajs.inputmaskData.q.indexOf(data[entryId].firstName) !== -1){
 					match[entryId] = data[entryId];
 				}
-				else if(data[entryId].firstName.indexOf(req.soajs.inputmaskData.q) !== -1){
+				else if(data[entryId].firstName.indexOf(soajs.inputmaskData.q) !== -1){
 					match[entryId] = data[entryId];
 				}
-				else if(req.soajs.inputmaskData.q.indexOf(data[entryId].lastName) !== -1){
+				else if(soajs.inputmaskData.q.indexOf(data[entryId].lastName) !== -1){
 					match[entryId] = data[entryId];
 				}
-				else if(data[entryId].lastName.indexOf(req.soajs.inputmaskData.q) !== -1){
+				else if(data[entryId].lastName.indexOf(soajs.inputmaskData.q) !== -1){
 					match[entryId] = data[entryId];
 				}
 			}

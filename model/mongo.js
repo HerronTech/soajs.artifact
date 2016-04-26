@@ -1,10 +1,14 @@
 'use strict';
+var soajs = require('soajs');
+var Mongo = soajs.mongo;
 var mongo;
+
+var dbName = "myContacts";
 var collName = "records";
 
-function checkIfMongo(req) {
+function checkIfMongo(soajs) {
 	if (!mongo) {
-		mongo = req.soajs.mongo(req.soajs.registry.coreDB.myDatabase);
+		mongo = new Mongo(soajs.registry.coreDB[dbName]);
 	}
 }
 
@@ -19,9 +23,9 @@ function validateId(id, cb) {
 
 module.exports = {
 
-	"getEntry": function (config, req, cb) {
-		checkIfMongo(req);
-		validateId(req.soajs.inputmaskData.id, function (error, id) {
+	"getEntry": function (soajs, cb) {
+		checkIfMongo(soajs);
+		validateId(soajs.inputmaskData.id, function (error, id) {
 			if (error) {
 				return cb(error);
 			}
@@ -30,21 +34,21 @@ module.exports = {
 		});
 	},
 
-	"getEntries": function (config, req, cb) {
-		checkIfMongo(req);
+	"getEntries": function (soajs, cb) {
+		checkIfMongo(soajs);
 		var options = {};
-		if (req.soajs.inputmaskData.from && req.soajs.inputmaskData.to) {
+		if (soajs.inputmaskData.from && soajs.inputmaskData.to) {
 			options = {
-				start: req.soajs.inputmaskData.from,
-				limit: req.soajs.inputmaskData.to
+				start: soajs.inputmaskData.from,
+				limit: soajs.inputmaskData.to
 			};
 		}
 		mongo.find(collName, {}, options, cb);
 	},
 
-	"deleteEntry": function (config, req, cb) {
-		checkIfMongo(req);
-		validateId(req.soajs.inputmaskData.id, function (error, id) {
+	"deleteEntry": function (soajs, cb) {
+		checkIfMongo(soajs);
+		validateId(soajs.inputmaskData.id, function (error, id) {
 			if (error) {
 				return cb(error);
 			}
@@ -63,14 +67,14 @@ module.exports = {
 		});
 	},
 
-	"addEntry": function (config, req, cb) {
-		checkIfMongo(req);
-		mongo.insert(collName, req.soajs.inputmaskData.data, cb);
+	"addEntry": function (soajs, cb) {
+		checkIfMongo(soajs);
+		mongo.insert(collName, soajs.inputmaskData.data, cb);
 	},
 
-	"updateEntry": function (config, req, cb) {
-		checkIfMongo(req);
-		validateId(req.soajs.inputmaskData.id, function (error, id) {
+	"updateEntry": function (soajs, cb) {
+		checkIfMongo(soajs);
+		validateId(soajs.inputmaskData.id, function (error, id) {
 			if (error) {
 				return cb(error);
 			}
@@ -84,17 +88,17 @@ module.exports = {
 					return cb(new Error("No entry found for id ", id));
 				}
 
-				var updateRec = req.soajs.inputmaskData.data;
+				var updateRec = soajs.inputmaskData.data;
 				mongo.update(collName, {"id": id}, updateRec, {"multi": false, "upsert": false, "safe": true}, cb);
 			});
 		});
 	},
 
-	"matchEntry": function (config, req, cb) {
-		checkIfMongo(req);
+	"matchEntry": function (soajs, cb) {
+		checkIfMongo(soajs);
 		var condition = {
-			"firstName": {"$regex": /req.soajs.inputmaskData.q/ },
-			"lastName":{"$regex": /req.soajs.inputmaskData.q/ }
+			"firstName": {"$regex": /soajs.inputmaskData.q/},
+			"lastName": {"$regex": /soajs.inputmaskData.q/}
 		};
 		mongo.find(collName, condition, cb);
 	}
