@@ -1,7 +1,7 @@
 'use strict';
 var soajs = require('soajs');
 var config = require('./config.js');
-var module = require("./lib/index");
+var contactsModule = require("./lib/index");
 
 var service = new soajs.server.service(config);
 
@@ -10,7 +10,7 @@ function initModel(req, res, cb) {
 	if(process.env.SOAJS_TEST && req.soajs.inputmaskData.model){
 		modelName = req.soajs.inputmaskData.model;
 	}
-	module.init(modelName, function (error, model) {
+	contactsModule.init(modelName, function (error, model) {
 		if (error) {
 			req.soajs.log.error(error);
 			return res.json(req.soajs.buildResponse({"code": 407, "msg": config.errors[407]}));
