@@ -1,6 +1,6 @@
 'use strict';
 var _ = require("lodash");
-var data = require(__dirname + "/../data/index.json");
+var data = require(__dirname + "/../data/index.js");
 
 module.exports = {
 
@@ -38,7 +38,6 @@ module.exports = {
 			});
 			return cb(null, output);
 		}
-
 		return cb(null, data);
 	},
 
@@ -98,19 +97,14 @@ module.exports = {
 		}
 
 		var match = {};
-
 		for (var entryId in data) {
 			if (Object.hasOwnProperty.call(data, entryId)) {
-				if (soajs.inputmaskData.q.indexOf(data[entryId].firstName) !== -1) {
-					match[entryId] = data[entryId];
-				}
-				else if (data[entryId].firstName.indexOf(soajs.inputmaskData.q) !== -1) {
-					match[entryId] = data[entryId];
-				}
-				else if (soajs.inputmaskData.q.indexOf(data[entryId].lastName) !== -1) {
-					match[entryId] = data[entryId];
-				}
-				else if (data[entryId].lastName.indexOf(soajs.inputmaskData.q) !== -1) {
+				if (
+					(soajs.inputmaskData.q.toLowerCase().indexOf(data[entryId].firstName.toLowerCase()) !== -1) ||
+					(data[entryId].firstName.toLowerCase().indexOf(soajs.inputmaskData.q.toLowerCase()) !== -1) ||
+					(soajs.inputmaskData.q.toLowerCase().indexOf(data[entryId].lastName.toLowerCase()) !== -1) ||
+					(data[entryId].lastName.toLowerCase().indexOf(soajs.inputmaskData.q.toLowerCase()) !== -1)
+				){
 					match[entryId] = data[entryId];
 				}
 			}

@@ -26,7 +26,7 @@ service.init(function () {
 	/**
 	 * Get one contact
 	 */
-	service.get("/contact/:id", function (req, res) {
+	service.get("/contact/id/:id", function (req, res) {
 		initModel(req, res, function (model) {
 			model.getEntry(config, req.soajs, function (error, response) {
 				return res.json(req.soajs.buildResponse(error, response));
@@ -59,7 +59,7 @@ service.init(function () {
 	/**
 	 * Add one or more contacts
 	 */
-	service.post("/contact", function (req, res) {
+	service.post("/contact/new", function (req, res) {
 		initModel(req, res, function (model) {
 			model.addEntry(config, req.soajs, function (error, response) {
 				return res.json(req.soajs.buildResponse(error, response));

@@ -43,7 +43,7 @@ module.exports = {
 			}
 		},
 
-		"/contact/:id": {
+		"/contact/id/:id": {
 			"_apiInfo": {
 				"l": "Get contact by ID",
 				"group": "Basic",
@@ -97,7 +97,7 @@ module.exports = {
 			}
 		},
 
-		"/contact": {
+		"/contact/new": {
 			"_apiInfo": {
 				"l": "Add new Contact(s)",
 				"group": "Basic",

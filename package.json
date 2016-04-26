@@ -22,5 +22,17 @@
     "soajs": "0.3.*"
   },
   "devDependencies": {
+    "grunt":"0.4.5",
+    "grunt-contrib-jshint":"*",
+    "grunt-jsdoc" : "*",
+    "grunt-contrib-clean" : "*",
+    "grunt-mocha-test" : "*",
+    "grunt-env" : "*",
+    "grunt-istanbul" : "*",
+    "grunt-coveralls" : "*",
+    "jshint": "*",
+    "lodash": "*",
+    "mocha": "*",
+    "request": "*"
   }
 }

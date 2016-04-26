@@ -9,7 +9,7 @@ module.exports = {
 		"required": true,
 		"type": "string"
 	},
-	"email": {
+	"emails": {
 		"required": true,
 		"type": "array",
 		"items": {
@@ -32,28 +32,28 @@ module.exports = {
 			"properties": {
 				"address1": {
 					"type": "string",
-					"requied": true
+					"required": true
 				},
 				"address2": {
 					"type": "string",
-					"requied": false
+					"required": false
 				},
 				"city": {
 					"type": "string",
-					"requied": true
+					"required": true
 				},
-				"sate": {
+				"state": {
 					"type": "string",
-					"requied": true,
-					"pattern": "/[A-Z]{2}/"
+					"required": true,
+					"pattern": "[A-Z]{2}"
 				},
 				"zip": {
 					"type": "string",
-					"requied": true
+					"required": true
 				},
 				"primary": {
 					"type": "boolean",
-					"requied": true
+					"required": true
 				}
 			}
 		}
