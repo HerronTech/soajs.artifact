@@ -6,7 +6,11 @@ var module = require("./lib/index");
 var service = new soajs.server.service(config);
 
 function initModel(req, res, cb) {
-	module.init("mongo", function (error, model) {
+	var modelName = "mongo";
+	if(process.env.SOAJS_TEST && req.soajs.inputmaskData.model){
+		modelName = req.soajs.inputmaskData.model;
+	}
+	module.init(modelName, function (error, model) {
 		if (error) {
 			req.soajs.log.error(error);
 			return res.json(req.soajs.buildResponse({"code": 407, "msg": config.errors[407]}));

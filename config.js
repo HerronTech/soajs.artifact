@@ -31,6 +31,15 @@ module.exports = {
 				"validation": {
 					"type": "string"
 				}
+			},
+			"model": {
+				"source": ['params.model'],
+				"required": false,
+				"default": "memory",
+				"validation": {
+					"type": "string",
+					"enum": ["memory", "mongo"]
+				}
 			}
 		},
 
@@ -40,7 +49,7 @@ module.exports = {
 				"group": "Basic",
 				"groupMain": false
 			},
-			"commonFields": ["id"]
+			"commonFields": ["id", "model"]
 		},
 
 		"/contact/match/:q": {
@@ -49,6 +58,7 @@ module.exports = {
 				"group": "Advance",
 				"groupMain": true
 			},
+			"commonFields": ["model"],
 			"q": {
 				"source": ['params.q'],
 				"required": true,
@@ -64,6 +74,7 @@ module.exports = {
 				"group": "Basic",
 				"groupMain": true
 			},
+			"commonFields": ["model"],
 			"from": {
 				"source": ['params.from', 'body.from'],
 				"required": false,
@@ -92,6 +103,7 @@ module.exports = {
 				"group": "Basic",
 				"groupMain": false
 			},
+			"commonFields": ["model"],
 			"data": {
 				"source": ["body.data"],
 				"required": true,
@@ -121,7 +133,7 @@ module.exports = {
 				"group": "Basic",
 				"groupMain": false
 			},
-			"commonFields": ["id"],
+			"commonFields": ["id", "model"],
 			"data":{
 				"required": true,
 				"source": ["body.data"],
@@ -138,7 +150,7 @@ module.exports = {
 				"group": "Basic",
 				"groupMain": false
 			},
-			"commonFields": ["id"]
+			"commonFields": ["id", "model"]
 		}
 	}
 };
