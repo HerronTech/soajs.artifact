@@ -112,7 +112,7 @@ scenarios.push({
 
 scenarios.push({
 	label: "Integration test 8: delete one contact",
-	method: 'DELETE',
+	method: 'del',
 	tests: [
 		{
 			skip: false,
