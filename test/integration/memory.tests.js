@@ -23,6 +23,20 @@ scenarios.push({
 });
 
 scenarios.push({
+	label: "Integration test 1.1: Get Contact wrong or no invalid id",
+	method: 'get',
+	tests: [
+		{
+			skip: false,
+			url: '/contact/id/100?model=memory',
+			result: {result: true },
+			body: null,
+			bodyForm: null
+		}
+	]
+});
+
+scenarios.push({
 	label: "Integration test 2: Get Contacts no pagination",
 	method: 'get',
 	tests: [
@@ -111,6 +125,20 @@ scenarios.push({
 });
 
 scenarios.push({
+	label: "Integration test 7.2: update one contact",
+	method: 'put',
+	tests: [
+		{
+			skip: false,
+			url: '/contact/update/100?model=memory',
+			result: {result: false, errors: {"codes":[405],"details":[{"code":405,"message":"Error Updating Entry!"}]} },
+			body: {"data": {"firstName": "Johnathan","lastName": "Doe","emails": [{"address": "jack@gmail.com","primary": true}],"addresses": [{"address1": "123 cory street","address2": "suite 12","city": "boston","state": "MA","zip": "12345","primary": true}]} },
+			bodyForm: null
+		}
+	]
+});
+
+scenarios.push({
 	label: "Integration test 8: delete one contact",
 	method: 'del',
 	tests: [
@@ -124,6 +152,19 @@ scenarios.push({
 	]
 });
 
+scenarios.push({
+	label: "Integration test 8: delete one contact",
+	method: 'del',
+	tests: [
+		{
+			skip: false,
+			url: '/contact/delete/100?model=memory',
+			result: {result: false, errors: {"codes":[403],"details":[{"code":403,"message":"Error Deleting Entry!"}]} },
+			body: null,
+			bodyForm: null
+		}
+	]
+});
 
 describe('Starting Integration tests', function () {
 

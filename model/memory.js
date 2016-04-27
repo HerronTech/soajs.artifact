@@ -22,23 +22,20 @@ module.exports = {
 			return cb(new Error("data object doesn't exist!"));
 		}
 
-		if (soajs.inputmaskData.from && soajs.inputmaskData.to) {
-			var from = soajs.inputmaskData.from;
-			var to = soajs.inputmaskData.to;
-			var keys = Object.keys(data);
+		var from = soajs.inputmaskData.from;
+		var to = soajs.inputmaskData.to;
+		var keys = Object.keys(data);
 
-			if (to > keys.length - 1) {
-				to = keys.length;
-			}
-			keys.slice(from, to);
-
-			var output = {};
-			keys.forEach(function (oneKey) {
-				output[oneKey] = data[oneKey];
-			});
-			return cb(null, output);
+		if (to > keys.length - 1) {
+			to = keys.length;
 		}
-		return cb(null, data);
+		keys.slice(from, to);
+
+		var output = {};
+		keys.forEach(function (oneKey) {
+			output[oneKey] = data[oneKey];
+		});
+		return cb(null, output);
 	},
 
 	"deleteEntry": function (soajs, cb) {
