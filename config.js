@@ -33,7 +33,7 @@ module.exports = {
 				}
 			},
 			"model": {
-				"source": ['params.model'],
+				"source": ['query.model'],
 				"required": false,
 				"default": "memory",
 				"validation": {
@@ -76,7 +76,7 @@ module.exports = {
 			},
 			"commonFields": ["model"],
 			"from": {
-				"source": ['params.from', 'body.from'],
+				"source": ['query.from', 'body.from'],
 				"required": false,
 				"default": 0,
 				"validation": {
@@ -86,7 +86,7 @@ module.exports = {
 				}
 			},
 			"to": {
-				"source": ['params.to', 'body.to'],
+				"source": ['query.to', 'body.to'],
 				"required": false,
 				"default": 100,
 				"validation": {

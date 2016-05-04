@@ -12,7 +12,7 @@ describe("Initialize & start controller and service", function () {
         service = helper.requireModule('./index.js');
         setTimeout(function () {
             require("./memory.tests.js");
-            // require("./mongo.tests.js");
+            require("./mongo.tests.js");
             done();
         }, 1000);
     });
