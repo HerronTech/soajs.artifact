@@ -35,7 +35,7 @@ describe('Starting Integration tests', function () {
 		it("add 1 new Contact", function(done){
 
 			helper.requester("post", {
-				uri: 'http://localhost:' + servicePort + '/contact/new/?model=mongo',
+				uri: 'http://localhost:' + servicePort + '/contact?model=mongo',
 				body: {"data": {"firstName": "Jane","lastName": "Doe","emails": [{"address": "jane@gmail.com","primary": true}],"addresses": [{"address1": "123 cory street","address2": "suite 12","city": "boston","state": "MA","zip": "12345","primary": true}]} },
 				form: null
 			}, function (err, body) {
@@ -47,7 +47,7 @@ describe('Starting Integration tests', function () {
 
 		it("add 3 new Contacts in one call", function(done){
 			helper.requester("post", {
-				uri: 'http://localhost:' + servicePort + '/contact/new/?model=mongo',
+				uri: 'http://localhost:' + servicePort + '/contact?model=mongo',
 				body: {"data": [
 					{"firstName": "Jack","lastName": "Doe","emails": [{"address": "jack@gmail.com","primary": true}],"addresses": [{"address1": "123 cory street","address2": "suite 12","city": "boston","state": "MA","zip": "12345","primary": true}]},
 					{"firstName": "Jeff","lastName": "Doe","emails": [{"address": "jeff@gmail.com","primary": true}],"addresses": [{"address1": "123 cory street","address2": "suite 12","city": "boston","state": "MA","zip": "12345","primary": true}]},
@@ -67,7 +67,7 @@ describe('Starting Integration tests', function () {
 			var expected = dbRecords[0];
 			expected._id = expected._id.toString();
 			helper.requester("get", {
-				uri: 'http://localhost:' + servicePort + '/contact/id/' + dbRecords[0]._id.toString() + '/?model=mongo',
+				uri: 'http://localhost:' + servicePort + '/contact/' + dbRecords[0]._id.toString() + '/?model=mongo',
 				body: null,
 				form: null
 			}, function (err, body) {
@@ -79,7 +79,7 @@ describe('Starting Integration tests', function () {
 
 		it("wrong id", function(done){
 			helper.requester("get", {
-				uri: 'http://localhost:' + servicePort + '/contact/id/' + new mongo.ObjectId().toString() + '/?model=mongo',
+				uri: 'http://localhost:' + servicePort + '/contact/' + new mongo.ObjectId().toString() + '/?model=mongo',
 				body: null,
 				form: null
 			}, function (err, body) {
@@ -93,7 +93,7 @@ describe('Starting Integration tests', function () {
 	describe("Testing List", function(){
 		it("no pagination", function(done){
 			helper.requester("get", {
-				uri: 'http://localhost:' + servicePort + '/contact/all/?model=mongo',
+				uri: 'http://localhost:' + servicePort + '/contacts?model=mongo',
 				body: null,
 				form: null
 			}, function (err, body) {
@@ -105,7 +105,7 @@ describe('Starting Integration tests', function () {
 
 		it("yes pagination", function(done){
 			helper.requester("get", {
-				uri: 'http://localhost:' + servicePort + '/contact/all/?model=mongo',
+				uri: 'http://localhost:' + servicePort + '/contacts?model=mongo',
 				body: null,
 				form: null
 			}, function (err, body) {
@@ -135,7 +135,7 @@ describe('Starting Integration tests', function () {
 	describe("Testing update", function(){
 		it("valid", function(done){
 			helper.requester("put", {
-				uri: 'http://localhost:' + servicePort + '/contact/update/' + dbRecords[0]._id.toString() + '/?model=mongo',
+				uri: 'http://localhost:' + servicePort + '/contact/' + dbRecords[0]._id.toString() + '/?model=mongo',
 				body: {"data": {"firstName": "Johnathan","lastName": "Doe","emails": [{"address": "jack@gmail.com","primary": true}],"addresses": [{"address1": "123 cory street","address2": "suite 12","city": "boston","state": "MA","zip": "12345","primary": true}]} },
 				form: null
 			}, function (err, body) {
@@ -147,7 +147,7 @@ describe('Starting Integration tests', function () {
 
 		it("invalid", function(done){
 			helper.requester("put", {
-				uri: 'http://localhost:' + servicePort + '/contact/update/' + new mongo.ObjectId().toString() + '/?model=mongo',
+				uri: 'http://localhost:' + servicePort + '/contact/' + new mongo.ObjectId().toString() + '/?model=mongo',
 				body: {"data": {"firstName": "Johnathan","lastName": "Doe","emails": [{"address": "jack@gmail.com","primary": true}],"addresses": [{"address1": "123 cory street","address2": "suite 12","city": "boston","state": "MA","zip": "12345","primary": true}]} },
 				form: null
 			}, function (err, body) {
@@ -161,7 +161,7 @@ describe('Starting Integration tests', function () {
 	describe("Testing delete", function(){
 		it("valid", function(done){
 			helper.requester("del", {
-				uri: 'http://localhost:' + servicePort + '/contact/delete/' + dbRecords[0]._id.toString() + '/?model=mongo',
+				uri: 'http://localhost:' + servicePort + '/contact/' + dbRecords[0]._id.toString() + '/?model=mongo',
 				body: null,
 				form: null
 			}, function (err, body) {
@@ -173,7 +173,7 @@ describe('Starting Integration tests', function () {
 
 		it("invalid", function(done){
 			helper.requester("del", {
-				uri: 'http://localhost:' + servicePort + '/contact/delete/' + new mongo.ObjectId().toString() + '/?model=mongo',
+				uri: 'http://localhost:' + servicePort + '/contact/' + new mongo.ObjectId().toString() + '/?model=mongo',
 				body: null,
 				form: null
 			}, function (err, body) {
