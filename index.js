@@ -26,7 +26,7 @@ service.init(function () {
 	/**
 	 * Get one contact
 	 */
-	service.get("/contact/id/:id", function (req, res) {
+	service.get("/contact/:id", function (req, res) {
 		initBLModel(req, res, function (BL) {
 			BL.getEntry(config, req.soajs, function (error, response) {
 				return res.json(req.soajs.buildResponse(error, response));
@@ -48,7 +48,7 @@ service.init(function () {
 	/**
 	 * Get all Contacts
 	 */
-	service.get("/contact/all", function (req, res) {
+	service.get("/contacts", function (req, res) {
 		initBLModel(req, res, function (BL) {
 			BL.getEntries(config, req.soajs, function (error, response) {
 				return res.json(req.soajs.buildResponse(error, response));
@@ -59,7 +59,7 @@ service.init(function () {
 	/**
 	 * Add one or more contacts
 	 */
-	service.post("/contact/new", function (req, res) {
+	service.post("/contact", function (req, res) {
 		initBLModel(req, res, function (BL) {
 			BL.addEntry(config, req.soajs, function (error, response) {
 				return res.json(req.soajs.buildResponse(error, response));
@@ -70,7 +70,7 @@ service.init(function () {
 	/**
 	 * Update one contact
 	 */
-	service.put("/contact/update/:id", function (req, res) {
+	service.put("/contact/:id", function (req, res) {
 		initBLModel(req, res, function (BL) {
 			BL.updateEntry(config, req.soajs, function (error, response) {
 				return res.json(req.soajs.buildResponse(error, response));
@@ -81,7 +81,7 @@ service.init(function () {
 	/**
 	 * Delete one contact
 	 */
-	service.delete("/contact/delete/:id", function (req, res) {
+	service.delete("/contact/:id", function (req, res) {
 		initBLModel(req, res, function (BL) {
 			BL.deleteEntry(config, req.soajs, function (error, response) {
 				return res.json(req.soajs.buildResponse(error, response));

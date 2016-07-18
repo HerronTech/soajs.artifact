@@ -14,7 +14,7 @@ scenarios.push({
 	tests: [
 		{
 			skip: false,
-			url: '/contact/id/1?model=memory',
+			url: '/contact/1?model=memory',
 			result: {result: true, data: {"_id": "1","firstName": "John","lastName": "Doe","emails": [{"address": "me@gmail.com","primary": true}],"addresses": [{"address1": "123 cory street","address2": "suite 12","city": "boston","state": "MA","zip": "12345","primary": true}]} },
 			body: null,
 			bodyForm: null
@@ -28,7 +28,7 @@ scenarios.push({
 	tests: [
 		{
 			skip: false,
-			url: '/contact/id/100?model=memory',
+			url: '/contact/100?model=memory',
 			result: {result: true },
 			body: null,
 			bodyForm: null
@@ -42,7 +42,7 @@ scenarios.push({
 	tests: [
 		{
 			skip: false,
-			url: '/contact/all?model=memory',
+			url: '/contacts?model=memory',
 			result: {result: true, data: {"1": {"_id": "1","firstName": "John","lastName": "Doe","emails": [{"address": "me@gmail.com","primary": true}],"addresses": [{"address1": "123 cory street","address2": "suite 12","city": "boston","state": "MA","zip": "12345","primary": true}]}} },
 			body: null,
 			bodyForm: null
@@ -56,7 +56,7 @@ scenarios.push({
 	tests: [
 		{
 			skip: false,
-			url: '/contact/all?from=0&to=2&model=memory',
+			url: '/contacts?from=0&to=2&model=memory',
 			result: {result: true, data: {"1": {"_id": "1","firstName": "John","lastName": "Doe","emails": [{"address": "me@gmail.com","primary": true}],"addresses": [{"address1": "123 cory street","address2": "suite 12","city": "boston","state": "MA","zip": "12345","primary": true}]}} },
 			body: null,
 			bodyForm: null
@@ -84,7 +84,7 @@ scenarios.push({
 	tests: [
 		{
 			skip: false,
-			url: '/contact/new/?model=memory',
+			url: '/contact?model=memory',
 			result: {result: true, data: true},
 			body: {"data": {"firstName": "Jane","lastName": "Doe","emails": [{"address": "jane@gmail.com","primary": true}],"addresses": [{"address1": "123 cory street","address2": "suite 12","city": "boston","state": "MA","zip": "12345","primary": true}]} },
 			bodyForm: null
@@ -98,7 +98,7 @@ scenarios.push({
 	tests: [
 		{
 			skip: false,
-			url: '/contact/new/?model=memory',
+			url: '/contact?model=memory',
 			result: {result: true, data: true},
 			body: {"data": [
 				{"firstName": "Jack","lastName": "Doe","emails": [{"address": "jack@gmail.com","primary": true}],"addresses": [{"address1": "123 cory street","address2": "suite 12","city": "boston","state": "MA","zip": "12345","primary": true}]},
@@ -116,7 +116,7 @@ scenarios.push({
 	tests: [
 		{
 			skip: false,
-			url: '/contact/update/1?model=memory',
+			url: '/contact/1?model=memory',
 			result: {result: true, data: true},
 			body: {"data": {"firstName": "Johnathan","lastName": "Doe","emails": [{"address": "jack@gmail.com","primary": true}],"addresses": [{"address1": "123 cory street","address2": "suite 12","city": "boston","state": "MA","zip": "12345","primary": true}]} },
 			bodyForm: null
@@ -130,7 +130,7 @@ scenarios.push({
 	tests: [
 		{
 			skip: false,
-			url: '/contact/update/100?model=memory',
+			url: '/contact/100?model=memory',
 			result: {result: false, errors: {"codes":[405],"details":[{"code":405,"message":"Error Updating Entry!"}]} },
 			body: {"data": {"firstName": "Johnathan","lastName": "Doe","emails": [{"address": "jack@gmail.com","primary": true}],"addresses": [{"address1": "123 cory street","address2": "suite 12","city": "boston","state": "MA","zip": "12345","primary": true}]} },
 			bodyForm: null
@@ -144,7 +144,7 @@ scenarios.push({
 	tests: [
 		{
 			skip: false,
-			url: '/contact/delete/1?model=memory',
+			url: '/contact/1?model=memory',
 			result: {result: true, data: true},
 			body: null,
 			bodyForm: null
@@ -158,7 +158,7 @@ scenarios.push({
 	tests: [
 		{
 			skip: false,
-			url: '/contact/delete/100?model=memory',
+			url: '/contact/100?model=memory',
 			result: {result: false, errors: {"codes":[403],"details":[{"code":403,"message":"Error Deleting Entry!"}]} },
 			body: null,
 			bodyForm: null
