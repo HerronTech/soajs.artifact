@@ -39,7 +39,7 @@ module.exports = {
 		var options = {};
 		if (soajs.inputmaskData.from && soajs.inputmaskData.to) {
 			options = {
-				start: soajs.inputmaskData.from,
+				skip: soajs.inputmaskData.from,
 				limit: soajs.inputmaskData.to
 			};
 		}
