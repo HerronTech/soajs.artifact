@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    serviceName: "soajs.artifact",
+    serviceName: "artifact",
     serviceVersion: 1,
     servicePort: 4999,
     serviceGroup: "SOAJS artifact",
