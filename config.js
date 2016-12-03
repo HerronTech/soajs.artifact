@@ -1,7 +1,5 @@
 'use strict';
 
-var contact = require(__dirname + "/model/schemas/contact.js");
-
 module.exports = {
     serviceName: "soajs.artifact",
     serviceVersion: 1,
@@ -112,7 +110,7 @@ module.exports = {
                         "oneOf": [
                             {
                                 "type": "object",
-                                "properties": contact
+                                "properties": require(__dirname + "/model/schemas/contact.js")
                             },
                             {
                                 "type": "array",
@@ -120,7 +118,7 @@ module.exports = {
                                 "uniqueItems": true,
                                 "items": {
                                     "type": "object",
-                                    "properties": contact
+                                    "properties": require(__dirname + "/model/schemas/contact.js")
                                 }
                             }
                         ]
@@ -141,7 +139,7 @@ module.exports = {
                     "source": ["body.data"],
                     "validation": {
                         "type": "object",
-                        "properties": contact
+                        "properties": require(__dirname + "/model/schemas/contact.js")
                     }
                 }
             }
