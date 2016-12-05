@@ -35,6 +35,6 @@
     "mocha": "*",
     "request": "*",
     "shelljs": "*",
-    "soajs.utilities" : "*"
+    "soajs.mongodb.data" : "0.2.*"
   }
 }
