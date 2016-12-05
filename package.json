@@ -33,6 +33,8 @@
     "jshint": "*",
     "lodash": "*",
     "mocha": "*",
-    "request": "*"
+    "request": "*",
+    "shelljs": "*",
+    "soajs.utilities" : "*"
   }
 }

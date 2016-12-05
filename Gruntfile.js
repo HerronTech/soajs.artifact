@@ -140,19 +140,19 @@ module.exports = function (grunt) {
         },
 
         mochaTest: {
-            unit: {
-                options: {
-                    reporter: 'spec',
-                    timeout: 90000
-                },
-                src: ['test/unit/*.js']
-            },
+            // unit: {
+            //     options: {
+            //         reporter: 'spec',
+            //         timeout: 90000
+            //     },
+            //     src: ['test/unit/*.js']
+            // },
             integration: {
                 options: {
                     reporter: 'spec',
                     timeout: 90000
                 },
-                src: ['test/integration/index.js']
+                src: ['test/integration/_server.js']
             }
         },
 
@@ -178,9 +178,8 @@ module.exports = function (grunt) {
     grunt.registerTask("doc", ['jsdoc']);
     grunt.registerTask("integration", ['env:coverage', 'mochaTest:integration']);
     grunt.registerTask("data", ['env:artifact', 'mochaTest:integration']);
-    grunt.registerTask("unit", ['env:coverage', 'mochaTest:unit']);
-    grunt.registerTask("test", ['clean', 'env:coverage', 'instrument', 'mochaTest:unit', 'mochaTest:integration']);
-    grunt.registerTask("coverage", ['clean', 'env:coverage', 'instrument', 'mochaTest:unit', 'mochaTest:integration', 'storeCoverage', 'makeReport', 'coveralls']);
+    grunt.registerTask("test", ['clean', 'env:coverage', 'instrument', 'mochaTest:integration']);
+    grunt.registerTask("coverage", ['clean', 'env:coverage', 'instrument', 'mochaTest:integration', 'storeCoverage', 'makeReport', 'coveralls']);
 
 };
 
