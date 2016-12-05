@@ -3,7 +3,7 @@
 module.exports = function() {
     return {
         "name": '',
-        "prefix": "",
+        "prefix": "artifact_",
         "servers": [
             {
                 "host": "127.0.0.1",

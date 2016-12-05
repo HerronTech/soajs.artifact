@@ -29,7 +29,7 @@ scenarios.push({
 		{
 			skip: false,
 			url: '/contact/100?model=memory',
-			result: {result: true },
+			result: {result: true, data: null},
 			body: null,
 			bodyForm: null
 		}
