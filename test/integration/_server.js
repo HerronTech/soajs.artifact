@@ -7,6 +7,8 @@ describe("importing sample data", function () {
 	
 	it("do import", function (done) {
 		shell.pushd(utilities.dir);
+		process.env.SOAJS_PROFILE = utilities.dir + "/data/artifact/profile.js";
+		
 		shell.exec("node index.js -f artifact", function (code) {
 			assert.equal(code, 0);
 			shell.popd();

@@ -84,7 +84,7 @@ describe('Starting Integration tests', function () {
 				form: null
 			}, function (err, body) {
 				assert.ifError(err);
-				assert.deepEqual(body, {result: true});
+				assert.deepEqual(body, {result: true, data: null});
 				done();
 			});
 		});
