@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "lodash": "*",
-    "soajs": "0.3.*"
+    "soajs": "0.4.*"
   },
   "devDependencies": {
     "grunt":"0.4.5",
