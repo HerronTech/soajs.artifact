@@ -1,7 +1,7 @@
 {
   "name": "soajs.artifact",
   "description": "SOAJS Learning Artifact",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "soajs team",
     "email": "team@soajs.org"
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "lodash": "4.17.4",
-    "soajs": "1.*"
+    "soajs": "1.0.*"
   },
   "devDependencies": {
     "grunt": "0.4.5",
@@ -34,6 +34,6 @@
     "mocha": "3.2.0",
     "shelljs": "0.7.5",
     "request": "2.79.0",
-    "soajs.mongodb.data" : "1.*"
+    "soajs.mongodb.data" : "1.0.*"
   }
 }
