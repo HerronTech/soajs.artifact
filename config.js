@@ -6,6 +6,7 @@ module.exports = {
     servicePort: 4999,
     serviceGroup: "SOAJS artifact",
     extKeyRequired: false,
+	oauth:false,
     type: "service",
     prerequisites: {
         cpu: '',
