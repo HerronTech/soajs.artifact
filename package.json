@@ -18,7 +18,7 @@
     "node": "*"
   },
   "dependencies": {
-    "lodash": "4.17.4",
+    "lodash": "4.17.11",
     "soajs": "1.0.*"
   },
   "devDependencies": {
